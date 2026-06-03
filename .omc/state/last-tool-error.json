@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd \\\"C:\\\\Users\\\\mj010\\\\AndroidStudioProjects\\\\makeitall_test\\\" && git add .gitignore build-logic/.gitignore core/common/.gitignore core/domain/.gitignore core/data/.gitignore core/designsy...",
+  "error": "Exit code 1\nwarning: in the working copy of 'build-logic/.gitignore', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'core/base/.gitignore', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'core/ble/.gitignore', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of 'core/common/.gitignore', LF will be replaced by CRLF the next time Git touches it\nwarning: in the working copy of '...",
+  "timestamp": "2026-06-03T08:39:06.460Z",
+  "retry_count": 1
+}

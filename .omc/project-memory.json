@@ -1,0 +1,297 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1780398762296,
+  "projectRoot": "C:\\Users\\mj010\\AndroidStudioProjects\\makeitall_test",
+  "techStack": {
+    "languages": [
+      {
+        "name": "Kotlin",
+        "version": null,
+        "confidence": "high",
+        "markers": [
+          "build.gradle.kts"
+        ]
+      }
+    ],
+    "frameworks": [],
+    "packageManager": "gradle",
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "app"
+    ],
+    "gitBranches": null
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "app": {
+      "path": "app",
+      "purpose": "Application code",
+      "fileCount": 3,
+      "lastAccessed": 1780398762235,
+      "keyFiles": [
+        "build.gradle.kts",
+        "proguard-rules.pro"
+      ]
+    },
+    "build": {
+      "path": "build",
+      "purpose": "Build output",
+      "fileCount": 0,
+      "lastAccessed": 1780398762235,
+      "keyFiles": []
+    },
+    "build-logic": {
+      "path": "build-logic",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1780398762236,
+      "keyFiles": [
+        "build.gradle.kts",
+        "settings.gradle.kts"
+      ]
+    },
+    "core": {
+      "path": "core",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1780398762236,
+      "keyFiles": []
+    },
+    "feature": {
+      "path": "feature",
+      "purpose": null,
+      "fileCount": 0,
+      "lastAccessed": 1780398762237,
+      "keyFiles": []
+    },
+    "gradle": {
+      "path": "gradle",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1780398762238,
+      "keyFiles": [
+        "gradle-daemon-jvm.properties",
+        "libs.versions.toml"
+      ]
+    },
+    "app\\build": {
+      "path": "app\\build",
+      "purpose": "Build output",
+      "fileCount": 0,
+      "lastAccessed": 1780398762239,
+      "keyFiles": []
+    },
+    "app\\src": {
+      "path": "app\\src",
+      "purpose": "Source code",
+      "fileCount": 0,
+      "lastAccessed": 1780398762239,
+      "keyFiles": []
+    },
+    "build-logic\\build": {
+      "path": "build-logic\\build",
+      "purpose": "Build output",
+      "fileCount": 0,
+      "lastAccessed": 1780398762240,
+      "keyFiles": []
+    },
+    "build-logic\\src": {
+      "path": "build-logic\\src",
+      "purpose": "Source code",
+      "fileCount": 0,
+      "lastAccessed": 1780398762241,
+      "keyFiles": []
+    },
+    "core\\data": {
+      "path": "core\\data",
+      "purpose": "Data files",
+      "fileCount": 1,
+      "lastAccessed": 1780398762241,
+      "keyFiles": [
+        "build.gradle.kts"
+      ]
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "core\\ble\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\ble\\source\\JumpRopeBleSource.kt",
+      "accessCount": 33,
+      "lastAccessed": 1780473525177,
+      "type": "file"
+    },
+    {
+      "path": "core\\ble\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\ble\\BleGattClient.kt",
+      "accessCount": 21,
+      "lastAccessed": 1780473523999,
+      "type": "file"
+    },
+    {
+      "path": "feature\\home\\src\\main\\java\\com\\choiminjun\\makeitall\\home\\HomeScreen.kt",
+      "accessCount": 19,
+      "lastAccessed": 1780465037758,
+      "type": "file"
+    },
+    {
+      "path": "feature\\exercise\\src\\main\\java\\com\\choiminjun\\makeitall\\exercise\\ExerciseViewModel.kt",
+      "accessCount": 16,
+      "lastAccessed": 1780473525598,
+      "type": "file"
+    },
+    {
+      "path": "feature\\exercise\\src\\main\\java\\com\\choiminjun\\makeitall\\exercise\\ExerciseScreen.kt",
+      "accessCount": 14,
+      "lastAccessed": 1780473228749,
+      "type": "file"
+    },
+    {
+      "path": "gradle\\libs.versions.toml",
+      "accessCount": 7,
+      "lastAccessed": 1780456700106,
+      "type": "directory"
+    },
+    {
+      "path": "feature\\exercise\\src\\main\\java\\com\\choiminjun\\makeitall\\exercise\\ExerciseContract.kt",
+      "accessCount": 7,
+      "lastAccessed": 1780473187436,
+      "type": "file"
+    },
+    {
+      "path": "app\\src\\main\\AndroidManifest.xml",
+      "accessCount": 6,
+      "lastAccessed": 1780465005147,
+      "type": "file"
+    },
+    {
+      "path": "app\\src\\main\\java\\com\\choiminjun\\makeitall\\navigation\\AppNavHost.kt",
+      "accessCount": 4,
+      "lastAccessed": 1780444806122,
+      "type": "file"
+    },
+    {
+      "path": "settings.gradle.kts",
+      "accessCount": 4,
+      "lastAccessed": 1780444811740,
+      "type": "file"
+    },
+    {
+      "path": "feature\\home\\src\\main\\java\\com\\choiminjun\\makeitall\\home\\HomeNavigation.kt",
+      "accessCount": 3,
+      "lastAccessed": 1780444783618,
+      "type": "file"
+    },
+    {
+      "path": "feature\\exercise\\src\\main\\java\\com\\choiminjun\\makeitall\\exercise\\ExerciseNavigation.kt",
+      "accessCount": 3,
+      "lastAccessed": 1780444789247,
+      "type": "file"
+    },
+    {
+      "path": "core\\ble\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\ble\\BleDataSource.kt",
+      "accessCount": 3,
+      "lastAccessed": 1780447274058,
+      "type": "file"
+    },
+    {
+      "path": "core\\ble\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\ble\\BleConstants.kt",
+      "accessCount": 3,
+      "lastAccessed": 1780447279578,
+      "type": "file"
+    },
+    {
+      "path": "core\\base\\src\\main\\java\\com\\choiminjun\\makeitall\\base\\BaseViewModel.kt",
+      "accessCount": 3,
+      "lastAccessed": 1780457064997,
+      "type": "file"
+    },
+    {
+      "path": "core\\navigation\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\navigation\\Route.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780444526940,
+      "type": "file"
+    },
+    {
+      "path": "core\\domain\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\domain\\model\\JumpRopeSnapshot.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780451159553,
+      "type": "file"
+    },
+    {
+      "path": "app\\src\\main\\java\\com\\choiminjun\\makeitall\\MakeitallApplication.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780455083075,
+      "type": "file"
+    },
+    {
+      "path": "feature\\home\\src\\main\\java\\com\\choiminjun\\makeitall\\home\\HomeContract.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780455753968,
+      "type": "file"
+    },
+    {
+      "path": "feature\\home\\src\\main\\java\\com\\choiminjun\\makeitall\\home\\HomeViewModel.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780455765898,
+      "type": "file"
+    },
+    {
+      "path": "core\\ble\\src\\main\\AndroidManifest.xml",
+      "accessCount": 1,
+      "lastAccessed": 1780411803775,
+      "type": "file"
+    },
+    {
+      "path": "core\\base\\src\\main\\AndroidManifest.xml",
+      "accessCount": 1,
+      "lastAccessed": 1780444722354,
+      "type": "file"
+    },
+    {
+      "path": "core\\domain\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\domain\\repository\\ExerciseRepository.kt",
+      "accessCount": 1,
+      "lastAccessed": 1780447019045,
+      "type": "file"
+    },
+    {
+      "path": "",
+      "accessCount": 1,
+      "lastAccessed": 1780447199390,
+      "type": "directory"
+    },
+    {
+      "path": "core\\ble\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\ble\\JumpRopeBleSource.kt",
+      "accessCount": 1,
+      "lastAccessed": 1780447259854,
+      "type": "file"
+    },
+    {
+      "path": "core\\base\\src\\main\\java\\com\\choiminjun\\makeitall\\base\\BaseContract.kt",
+      "accessCount": 1,
+      "lastAccessed": 1780455723354,
+      "type": "file"
+    },
+    {
+      "path": "core\\domain\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\domain\\model\\BleConnectionState.kt",
+      "accessCount": 1,
+      "lastAccessed": 1780473144157,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
