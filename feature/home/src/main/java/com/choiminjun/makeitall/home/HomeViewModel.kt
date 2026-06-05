@@ -11,10 +11,15 @@ class HomeViewModel @Inject constructor() : BaseViewModel<HomeState, HomeIntent,
     override suspend fun handleIntent(intent: HomeIntent) {
         when (intent) {
             HomeIntent.ClickStartExercise -> clickStartExercise()
+            HomeIntent.ClickCompetitionMode -> clickCompetitionMode()
         }
     }
 
     private fun clickStartExercise() {
         postSideEffect(HomeSideEffect.NavigateToExercise)
+    }
+
+    private fun clickCompetitionMode() {
+        postSideEffect(HomeSideEffect.NavigateToCompetition)
     }
 }

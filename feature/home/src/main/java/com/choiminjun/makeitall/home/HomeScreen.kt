@@ -27,9 +27,15 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.choiminjun.makeitall.designsystem.theme.MakeitallTheme
 import timber.log.Timber
 
+private enum class NavigationTarget {
+    EXERCISE,
+    COMPETITION,
+}
+
 @Composable
 fun HomeRoute(
     navigateToExercise: () -> Unit,
+    navigateToCompetition: () -> Unit,
     viewModel: HomeViewModel = hiltViewModel(),
 ) {
     val context = LocalContext.current
@@ -47,13 +53,21 @@ fun HomeRoute(
         )
     }
 
-    var allPermissionsGranted by remember { mutableStateOf(false) }
+    var pendingNavigation by remember { mutableStateOf<NavigationTarget?>(null) }
 
-    LaunchedEffect(allPermissionsGranted) {
-        if (allPermissionsGranted) {
-            Timber.d("[HomeRoute] LaunchedEffect: 권한 허용됨 → navigateToExercise 호출")
-            allPermissionsGranted = false
-            navigateToExercise()
+    LaunchedEffect(pendingNavigation) {
+        when (pendingNavigation) {
+            NavigationTarget.EXERCISE -> {
+                Timber.d("[HomeRoute] LaunchedEffect: 권한 허용됨 → navigateToExercise 호출")
+                pendingNavigation = null
+                navigateToExercise()
+            }
+            NavigationTarget.COMPETITION -> {
+                Timber.d("[HomeRoute] LaunchedEffect: 권한 허용됨 → navigateToCompetition 호출")
+                pendingNavigation = null
+                navigateToCompetition()
+            }
+            null -> Unit
         }
     }
 
@@ -69,27 +83,42 @@ fun HomeRoute(
                 result[Manifest.permission.BLUETOOTH_ADMIN] == true
         }
         Timber.tag("Home").d("btGranted=$btGranted")
-        if (btGranted) {
-            Timber.tag("Home").d("권한 통과 → allPermissionsGranted = true")
-            allPermissionsGranted = true
-        } else {
+        if (!btGranted) {
             Timber.tag("Home").w("권한 부족: bt=$btGranted")
+        }
+    }
+
+    viewModel.collectSideEffect { sideEffect ->
+        when (sideEffect) {
+            HomeSideEffect.NavigateToExercise -> {
+                val alreadyGranted = blePermissions.all {
+                    ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
+                }
+                if (alreadyGranted) {
+                    navigateToExercise()
+                } else {
+                    pendingNavigation = NavigationTarget.EXERCISE
+                    permissionLauncher.launch(blePermissions)
+                }
+            }
+            HomeSideEffect.NavigateToCompetition -> {
+                val alreadyGranted = blePermissions.all {
+                    ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
+                }
+                if (alreadyGranted) {
+                    navigateToCompetition()
+                } else {
+                    pendingNavigation = NavigationTarget.COMPETITION
+                    permissionLauncher.launch(blePermissions)
+                }
+            }
         }
     }
 
     HomeScreen(
         uiState = uiState,
-        onStartClick = {
-            val alreadyGranted = blePermissions.all {
-                ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
-            }
-            Timber.tag("Home").d("onStartClick: alreadyGranted=$alreadyGranted")
-            if (alreadyGranted) {
-                navigateToExercise()
-            } else {
-                permissionLauncher.launch(blePermissions)
-            }
-        },
+        onStartClick = { viewModel.onIntent(HomeIntent.ClickStartExercise) },
+        onCompetitionClick = { viewModel.onIntent(HomeIntent.ClickCompetitionMode) },
     )
 }
 
@@ -97,6 +126,7 @@ fun HomeRoute(
 fun HomeScreen(
     uiState: HomeState,
     onStartClick: () -> Unit,
+    onCompetitionClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Column(
@@ -115,7 +145,16 @@ fun HomeScreen(
             modifier = Modifier.padding(top = 24.dp),
         ) {
             Text(
-                text = "운동 시작",
+                text = "테스트",
+                style = MakeitallTheme.typography.bodyMSB,
+            )
+        }
+        Button(
+            onClick = onCompetitionClick,
+            modifier = Modifier.padding(top = 16.dp),
+        ) {
+            Text(
+                text = "경쟁 모드",
                 style = MakeitallTheme.typography.bodyMSB,
             )
         }
@@ -129,6 +168,7 @@ private fun HomeScreenPreview() {
         HomeScreen(
             uiState = HomeState(),
             onStartClick = {},
+            onCompetitionClick = {},
         )
     }
 }

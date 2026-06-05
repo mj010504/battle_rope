@@ -6,3 +6,7 @@ plugins {
 android {
     namespace = "com.choiminjun.makeitall.designsystem"
 }
+
+dependencies {
+    implementation(libs.lottie.compose)
+}

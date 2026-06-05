@@ -10,8 +10,10 @@ data class HomeState(
 
 sealed interface HomeIntent : UiIntent {
     data object ClickStartExercise : HomeIntent
+    data object ClickCompetitionMode : HomeIntent
 }
 
 sealed interface HomeSideEffect : UiSideEffect {
     data object NavigateToExercise : HomeSideEffect
+    data object NavigateToCompetition : HomeSideEffect
 }

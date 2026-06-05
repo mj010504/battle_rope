@@ -10,11 +10,14 @@ private val LocalTypography = staticCompositionLocalOf {
     MakeitallTypography()
 }
 
+private val LocalColors = staticCompositionLocalOf {
+    LightMakeitallColors
+}
+
 /**
  * 앱 전역 테마.
  *
- * 색상 팔레트는 아직 정의하지 않고 Material3 기본 ColorScheme 을 사용한다.
- * Pretendard 기반 [MakeitallTypography] 를 CompositionLocal 로 제공한다.
+ * Pretendard 기반 [MakeitallTypography] 와 [MakeitallColors] 를 CompositionLocal 로 제공한다.
  */
 @Composable
 fun MakeitallTheme(
@@ -22,6 +25,7 @@ fun MakeitallTheme(
 ) {
     CompositionLocalProvider(
         LocalTypography provides MakeitallTypography(),
+        LocalColors provides LightMakeitallColors,
     ) {
         MaterialTheme(
             content = content,
@@ -34,4 +38,9 @@ object MakeitallTheme {
         @Composable
         @ReadOnlyComposable
         get() = LocalTypography.current
+
+    val colors: MakeitallColors
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalColors.current
 }

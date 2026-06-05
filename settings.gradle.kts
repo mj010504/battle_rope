@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -24,3 +25,15 @@ dependencyResolutionManagement {
 
 rootProject.name = "makeitall_test"
 include(":app")
+
+include(":core:base")
+include(":core:ble")
+include(":core:common")
+include(":core:data")
+include(":core:designsystem")
+include(":core:domain")
+include(":core:navigation")
+
+include(":feature:competition")
+include(":feature:exercise")
+include(":feature:home")

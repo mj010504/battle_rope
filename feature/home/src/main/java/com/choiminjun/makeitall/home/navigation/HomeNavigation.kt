@@ -7,8 +7,12 @@ import com.choiminjun.makeitall.navigation.Route
 
 fun NavGraphBuilder.homeScreen(
     navigateToExercise: () -> Unit,
+    navigateToCompetition: () -> Unit,
 ) {
     composable(Route.Home.route) {
-        HomeRoute(navigateToExercise = navigateToExercise)
+        HomeRoute(
+            navigateToExercise = navigateToExercise,
+            navigateToCompetition = navigateToCompetition,
+        )
     }
 }
