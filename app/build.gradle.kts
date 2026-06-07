@@ -1,14 +1,14 @@
 plugins {
-    id("makeitall.android.application")
-    id("makeitall.android.compose")
+    id("battlerope.android.application")
+    id("battlerope.android.compose")
 }
 
 android {
-    namespace = "com.choiminjun.makeitall"
+    namespace = "com.choiminjun.battlerope"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.choiminjun.makeitall"
+        applicationId = "com.choiminjun.battlerope"
         minSdk = 28
         targetSdk = 36
         versionCode = 1

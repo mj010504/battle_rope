@@ -23,7 +23,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "makeitall_test"
+rootProject.name = "battle_rope"
 include(":app")
 
 include(":core:base")

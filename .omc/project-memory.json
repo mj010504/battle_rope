@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastScanned": 1780398762296,
+  "lastScanned": 1780794838039,
   "projectRoot": "C:\\Users\\mj010\\AndroidStudioProjects\\makeitall_test",
   "techStack": {
     "languages": [
@@ -34,7 +34,8 @@
     "isMonorepo": false,
     "workspaces": [],
     "mainDirectories": [
-      "app"
+      "app",
+      "docs"
     ],
     "gitBranches": null
   },
@@ -44,7 +45,7 @@
       "path": "app",
       "purpose": "Application code",
       "fileCount": 3,
-      "lastAccessed": 1780398762235,
+      "lastAccessed": 1780794837965,
       "keyFiles": [
         "build.gradle.kts",
         "proguard-rules.pro"
@@ -54,14 +55,14 @@
       "path": "build",
       "purpose": "Build output",
       "fileCount": 0,
-      "lastAccessed": 1780398762235,
+      "lastAccessed": 1780794837966,
       "keyFiles": []
     },
     "build-logic": {
       "path": "build-logic",
       "purpose": null,
-      "fileCount": 2,
-      "lastAccessed": 1780398762236,
+      "fileCount": 3,
+      "lastAccessed": 1780794837967,
       "keyFiles": [
         "build.gradle.kts",
         "settings.gradle.kts"
@@ -71,21 +72,28 @@
       "path": "core",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1780398762236,
+      "lastAccessed": 1780794837969,
+      "keyFiles": []
+    },
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 0,
+      "lastAccessed": 1780794837970,
       "keyFiles": []
     },
     "feature": {
       "path": "feature",
       "purpose": null,
       "fileCount": 0,
-      "lastAccessed": 1780398762237,
+      "lastAccessed": 1780794837971,
       "keyFiles": []
     },
     "gradle": {
       "path": "gradle",
       "purpose": null,
       "fileCount": 2,
-      "lastAccessed": 1780398762238,
+      "lastAccessed": 1780794837973,
       "keyFiles": [
         "gradle-daemon-jvm.properties",
         "libs.versions.toml"
@@ -95,201 +103,299 @@
       "path": "app\\build",
       "purpose": "Build output",
       "fileCount": 0,
-      "lastAccessed": 1780398762239,
+      "lastAccessed": 1780794837975,
       "keyFiles": []
     },
     "app\\src": {
       "path": "app\\src",
       "purpose": "Source code",
       "fileCount": 0,
-      "lastAccessed": 1780398762239,
+      "lastAccessed": 1780794837978,
       "keyFiles": []
     },
     "build-logic\\build": {
       "path": "build-logic\\build",
       "purpose": "Build output",
       "fileCount": 0,
-      "lastAccessed": 1780398762240,
+      "lastAccessed": 1780794837980,
       "keyFiles": []
     },
     "build-logic\\src": {
       "path": "build-logic\\src",
       "purpose": "Source code",
       "fileCount": 0,
-      "lastAccessed": 1780398762241,
+      "lastAccessed": 1780794837982,
+      "keyFiles": []
+    },
+    "core\\build": {
+      "path": "core\\build",
+      "purpose": "Build output",
+      "fileCount": 0,
+      "lastAccessed": 1780794837983,
       "keyFiles": []
     },
     "core\\data": {
       "path": "core\\data",
       "purpose": "Data files",
-      "fileCount": 1,
-      "lastAccessed": 1780398762241,
+      "fileCount": 2,
+      "lastAccessed": 1780794837984,
       "keyFiles": [
         "build.gradle.kts"
       ]
+    },
+    "feature\\build": {
+      "path": "feature\\build",
+      "purpose": "Build output",
+      "fileCount": 0,
+      "lastAccessed": 1780794837985,
+      "keyFiles": []
     }
   },
   "hotPaths": [
     {
-      "path": "core\\ble\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\ble\\source\\JumpRopeBleSource.kt",
-      "accessCount": 33,
-      "lastAccessed": 1780473525177,
-      "type": "file"
-    },
-    {
-      "path": "core\\ble\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\ble\\BleGattClient.kt",
+      "path": "",
       "accessCount": 21,
-      "lastAccessed": 1780473523999,
-      "type": "file"
-    },
-    {
-      "path": "feature\\home\\src\\main\\java\\com\\choiminjun\\makeitall\\home\\HomeScreen.kt",
-      "accessCount": 19,
-      "lastAccessed": 1780465037758,
-      "type": "file"
-    },
-    {
-      "path": "feature\\exercise\\src\\main\\java\\com\\choiminjun\\makeitall\\exercise\\ExerciseViewModel.kt",
-      "accessCount": 16,
-      "lastAccessed": 1780473525598,
-      "type": "file"
-    },
-    {
-      "path": "feature\\exercise\\src\\main\\java\\com\\choiminjun\\makeitall\\exercise\\ExerciseScreen.kt",
-      "accessCount": 14,
-      "lastAccessed": 1780473228749,
-      "type": "file"
-    },
-    {
-      "path": "gradle\\libs.versions.toml",
-      "accessCount": 7,
-      "lastAccessed": 1780456700106,
+      "lastAccessed": 1780812478879,
       "type": "directory"
     },
     {
-      "path": "feature\\exercise\\src\\main\\java\\com\\choiminjun\\makeitall\\exercise\\ExerciseContract.kt",
-      "accessCount": 7,
-      "lastAccessed": 1780473187436,
-      "type": "file"
-    },
-    {
-      "path": "app\\src\\main\\AndroidManifest.xml",
+      "path": "feature\\home\\src\\main\\java\\com\\choiminjun\\makeitall\\home\\HomeScreen.kt",
       "accessCount": 6,
-      "lastAccessed": 1780465005147,
-      "type": "file"
-    },
-    {
-      "path": "app\\src\\main\\java\\com\\choiminjun\\makeitall\\navigation\\AppNavHost.kt",
-      "accessCount": 4,
-      "lastAccessed": 1780444806122,
-      "type": "file"
-    },
-    {
-      "path": "settings.gradle.kts",
-      "accessCount": 4,
-      "lastAccessed": 1780444811740,
-      "type": "file"
-    },
-    {
-      "path": "feature\\home\\src\\main\\java\\com\\choiminjun\\makeitall\\home\\HomeNavigation.kt",
-      "accessCount": 3,
-      "lastAccessed": 1780444783618,
-      "type": "file"
-    },
-    {
-      "path": "feature\\exercise\\src\\main\\java\\com\\choiminjun\\makeitall\\exercise\\ExerciseNavigation.kt",
-      "accessCount": 3,
-      "lastAccessed": 1780444789247,
-      "type": "file"
-    },
-    {
-      "path": "core\\ble\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\ble\\BleDataSource.kt",
-      "accessCount": 3,
-      "lastAccessed": 1780447274058,
-      "type": "file"
-    },
-    {
-      "path": "core\\ble\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\ble\\BleConstants.kt",
-      "accessCount": 3,
-      "lastAccessed": 1780447279578,
-      "type": "file"
-    },
-    {
-      "path": "core\\base\\src\\main\\java\\com\\choiminjun\\makeitall\\base\\BaseViewModel.kt",
-      "accessCount": 3,
-      "lastAccessed": 1780457064997,
+      "lastAccessed": 1780806722783,
       "type": "file"
     },
     {
       "path": "core\\navigation\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\navigation\\Route.kt",
-      "accessCount": 2,
-      "lastAccessed": 1780444526940,
+      "accessCount": 5,
+      "lastAccessed": 1780801188823,
       "type": "file"
     },
     {
-      "path": "core\\domain\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\domain\\model\\JumpRopeSnapshot.kt",
-      "accessCount": 2,
-      "lastAccessed": 1780451159553,
+      "path": "feature\\competition\\src\\main\\java\\com\\choiminjun\\makeitall\\competition\\game\\GameViewModel.kt",
+      "accessCount": 4,
+      "lastAccessed": 1780801517945,
       "type": "file"
     },
     {
-      "path": "app\\src\\main\\java\\com\\choiminjun\\makeitall\\MakeitallApplication.kt",
+      "path": "feature\\competition\\src\\main\\java\\com\\choiminjun\\makeitall\\competition\\connection\\DeviceConnectionScreen.kt",
+      "accessCount": 4,
+      "lastAccessed": 1780805471240,
+      "type": "file"
+    },
+    {
+      "path": "feature\\competition\\src\\main\\java\\com\\choiminjun\\makeitall\\competition\\game\\GameScreen.kt",
+      "accessCount": 4,
+      "lastAccessed": 1780806636435,
+      "type": "file"
+    },
+    {
+      "path": "feature\\home\\src\\main\\java\\com\\choiminjun\\makeitall\\home\\HomeViewModel.kt",
+      "accessCount": 3,
+      "lastAccessed": 1780800780830,
+      "type": "file"
+    },
+    {
+      "path": "app\\src\\main\\java\\com\\choiminjun\\makeitall\\navigation\\AppNavHost.kt",
+      "accessCount": 3,
+      "lastAccessed": 1780801202030,
+      "type": "file"
+    },
+    {
+      "path": "feature\\exercise\\src\\main\\java\\com\\choiminjun\\makeitall\\exercise\\ExerciseScreen.kt",
+      "accessCount": 3,
+      "lastAccessed": 1780806728476,
+      "type": "file"
+    },
+    {
+      "path": "feature\\competition\\src\\main\\java\\com\\choiminjun\\makeitall\\competition\\selection\\ModeSelectionScreen.kt",
+      "accessCount": 3,
+      "lastAccessed": 1780806734276,
+      "type": "file"
+    },
+    {
+      "path": "app",
+      "accessCount": 3,
+      "lastAccessed": 1780807499263,
+      "type": "directory"
+    },
+    {
+      "path": "app\\src\\main\\AndroidManifest.xml",
+      "accessCount": 3,
+      "lastAccessed": 1780812477486,
+      "type": "file"
+    },
+    {
+      "path": "core\\ble",
       "accessCount": 2,
-      "lastAccessed": 1780455083075,
+      "lastAccessed": 1780705378487,
+      "type": "directory"
+    },
+    {
+      "path": "core\\ble\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\ble\\BleGattClient.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780707105306,
+      "type": "file"
+    },
+    {
+      "path": "core\\domain\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\domain\\model\\BleConnectionState.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780707106263,
+      "type": "file"
+    },
+    {
+      "path": "core\\ble\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\ble\\source\\JumpRopeBleSource.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780707106817,
+      "type": "file"
+    },
+    {
+      "path": "core\\domain\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\domain\\repository\\ExerciseRepository.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780710894266,
+      "type": "file"
+    },
+    {
+      "path": "feature\\competition\\src\\main\\java\\com\\choiminjun\\makeitall\\competition\\connection\\DeviceConnectionViewModel.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780710900367,
+      "type": "file"
+    },
+    {
+      "path": "feature\\competition\\src\\main\\java\\com\\choiminjun\\makeitall\\competition\\connection\\DeviceConnectionContract.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780726596495,
+      "type": "file"
+    },
+    {
+      "path": "feature\\exercise\\src\\main\\java\\com\\choiminjun\\makeitall\\exercise\\ExerciseViewModel.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780726606047,
       "type": "file"
     },
     {
       "path": "feature\\home\\src\\main\\java\\com\\choiminjun\\makeitall\\home\\HomeContract.kt",
       "accessCount": 2,
-      "lastAccessed": 1780455753968,
+      "lastAccessed": 1780800768133,
       "type": "file"
     },
     {
-      "path": "feature\\home\\src\\main\\java\\com\\choiminjun\\makeitall\\home\\HomeViewModel.kt",
+      "path": "feature\\home\\src\\main\\java\\com\\choiminjun\\makeitall\\home\\navigation\\HomeNavigation.kt",
       "accessCount": 2,
-      "lastAccessed": 1780455765898,
+      "lastAccessed": 1780801207594,
       "type": "file"
+    },
+    {
+      "path": "feature\\exercise\\src\\main\\java\\com\\choiminjun\\makeitall\\exercise\\navigation\\ExerciseNavigation.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780801213214,
+      "type": "file"
+    },
+    {
+      "path": "feature\\competition\\src\\main\\java\\com\\choiminjun\\makeitall\\competition\\navigation\\CompetitionNavigation.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780801218806,
+      "type": "file"
+    },
+    {
+      "path": "core\\designsystem\\src\\main\\java\\com\\choiminjun\\makeitall\\designsystem\\theme\\MakeitallColor.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780805361939,
+      "type": "file"
+    },
+    {
+      "path": "core\\designsystem\\src\\main\\java\\com\\choiminjun\\makeitall\\designsystem\\component\\MakeitallButton.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780806688278,
+      "type": "file"
+    },
+    {
+      "path": "app\\src\\main\\res\\values\\strings.xml",
+      "accessCount": 2,
+      "lastAccessed": 1780808224622,
+      "type": "file"
+    },
+    {
+      "path": "app\\src\\main\\res\\values\\themes.xml",
+      "accessCount": 2,
+      "lastAccessed": 1780808230187,
+      "type": "file"
+    },
+    {
+      "path": "feature",
+      "accessCount": 1,
+      "lastAccessed": 1780705362120,
+      "type": "directory"
+    },
+    {
+      "path": "core",
+      "accessCount": 1,
+      "lastAccessed": 1780705362317,
+      "type": "directory"
     },
     {
       "path": "core\\ble\\src\\main\\AndroidManifest.xml",
       "accessCount": 1,
-      "lastAccessed": 1780411803775,
+      "lastAccessed": 1780705369635,
       "type": "file"
     },
     {
-      "path": "core\\base\\src\\main\\AndroidManifest.xml",
+      "path": "core\\domain",
       "accessCount": 1,
-      "lastAccessed": 1780444722354,
-      "type": "file"
-    },
-    {
-      "path": "core\\domain\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\domain\\repository\\ExerciseRepository.kt",
-      "accessCount": 1,
-      "lastAccessed": 1780447019045,
-      "type": "file"
-    },
-    {
-      "path": "",
-      "accessCount": 1,
-      "lastAccessed": 1780447199390,
+      "lastAccessed": 1780705378420,
       "type": "directory"
     },
     {
-      "path": "core\\ble\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\ble\\JumpRopeBleSource.kt",
+      "path": "core\\ble\\src",
       "accessCount": 1,
-      "lastAccessed": 1780447259854,
+      "lastAccessed": 1780707050984,
+      "type": "directory"
+    },
+    {
+      "path": "feature\\competition\\src\\main\\java\\com\\choiminjun\\makeitall\\competition\\game\\GameContract.kt",
+      "accessCount": 1,
+      "lastAccessed": 1780726595325,
       "type": "file"
     },
     {
-      "path": "core\\base\\src\\main\\java\\com\\choiminjun\\makeitall\\base\\BaseContract.kt",
+      "path": "feature\\competition\\src\\main\\java\\com\\choiminjun\\makeitall\\competition\\selection\\ModeSelectionViewModel.kt",
       "accessCount": 1,
-      "lastAccessed": 1780455723354,
+      "lastAccessed": 1780726596971,
       "type": "file"
     },
     {
-      "path": "core\\domain\\src\\main\\kotlin\\com\\choiminjun\\makeitall\\domain\\model\\BleConnectionState.kt",
+      "path": "feature\\competition\\src\\main\\java\\com\\choiminjun\\makeitall\\competition\\game\\engine\\GameEngine.kt",
       "accessCount": 1,
-      "lastAccessed": 1780473144157,
+      "lastAccessed": 1780726604236,
+      "type": "file"
+    },
+    {
+      "path": "core\\designsystem\\src\\main\\java\\com\\choiminjun\\makeitall\\designsystem\\theme\\MakeitallTheme.kt",
+      "accessCount": 1,
+      "lastAccessed": 1780805378863,
+      "type": "file"
+    },
+    {
+      "path": "gradle\\libs.versions.toml",
+      "accessCount": 1,
+      "lastAccessed": 1780805644101,
+      "type": "file"
+    },
+    {
+      "path": "feature\\competition\\src\\main\\java\\com\\choiminjun\\makeitall\\competition\\game\\GameResultSection.kt",
+      "accessCount": 1,
+      "lastAccessed": 1780806637294,
+      "type": "file"
+    },
+    {
+      "path": "settings.gradle.kts",
+      "accessCount": 1,
+      "lastAccessed": 1780807488496,
+      "type": "file"
+    },
+    {
+      "path": "app\\src\\main\\java\\com\\choiminjun\\makeitall\\MakeitallApplication.kt",
+      "accessCount": 1,
+      "lastAccessed": 1780807498407,
       "type": "file"
     }
   ],

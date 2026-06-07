@@ -1,10 +1,10 @@
 plugins {
-    id("makeitall.android.library")
-    id("makeitall.android.hilt")
+    id("battlerope.android.library")
+    id("battlerope.android.hilt")
 }
 
 android {
-    namespace = "com.choiminjun.makeitall.data"
+    namespace = "com.choiminjun.battlerope.data"
 }
 
 dependencies {

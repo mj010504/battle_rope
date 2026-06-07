@@ -1,9 +1,9 @@
 plugins {
-    id("makeitall.android.feature")
+    id("battlerope.android.feature")
 }
 
 android {
-    namespace = "com.choiminjun.makeitall.home"
+    namespace = "com.choiminjun.battlerope.home"
 }
 
 dependencies {

@@ -1,5 +1,5 @@
 plugins {
-    id("makeitall.kotlin.library")
+    id("battlerope.kotlin.library")
     alias(libs.plugins.kotlin.serialization)
 }
 

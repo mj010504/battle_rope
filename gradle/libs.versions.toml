@@ -39,6 +39,7 @@ timber = "5.0.1"
 # Lottie
 lottie = "6.3.0"
 
+
 [libraries]
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
 kotlin-gradlePlugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -91,6 +92,7 @@ timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "tim
 
 # Lottie
 lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

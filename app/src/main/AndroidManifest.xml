@@ -15,7 +15,7 @@
         android:maxSdkVersion="30" />
 
     <application
-        android:name=".MakeitallApplication"
+        android:name=".BattleRopeApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -23,12 +23,12 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Makeitall_test">
+        android:theme="@style/Theme.Battle_rope">
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.Makeitall_test">
+            android:theme="@style/Theme.Battle_rope">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

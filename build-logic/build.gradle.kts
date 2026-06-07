@@ -12,11 +12,11 @@ dependencies {
 gradlePlugin {
     plugins {
         register("androidHilt") {
-            id = "makeitall.android.hilt"
+            id = "battlerope.android.hilt"
             implementationClass = "com.choiminjun.build.logic.HiltAndroidPlugin"
         }
         register("kotlinHilt") {
-            id = "makeitall.kotlin.hilt"
+            id = "battlerope.kotlin.hilt"
             implementationClass = "com.choiminjun.build.logic.HiltKotlinPlugin"
         }
     }

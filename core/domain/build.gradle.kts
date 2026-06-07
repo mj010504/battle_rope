@@ -1,6 +1,6 @@
 plugins {
-    id("makeitall.kotlin.library")
-    id("makeitall.kotlin.hilt")
+    id("battlerope.kotlin.library")
+    id("battlerope.kotlin.hilt")
 }
 
 dependencies {
