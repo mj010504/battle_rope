@@ -17,11 +17,11 @@ fun AppNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Route.Home.route,
+        startDestination = HomeGraph.HomeRoute,
     ) {
         homeScreen(
-            navigateToExercise = { navController.navigate(Route.Exercise.route) },
-            navigateToCompetition = { navController.navigate(Route.DeviceConnection.route) },
+            navigateToExercise = { navController.navigate(ExerciseGraph.ExerciseRoute) },
+            navigateToCompetition = { navController.navigate(CompetitionGraph.DeviceConnectionRoute) },
         )
         exerciseScreen(
             navigateBack = { navController.popBackStack() },
@@ -36,9 +36,8 @@ fun AppNavHost(
         )
         gameScreen(
             navigateBack = {
-                navController.popBackStack(Route.Home.route, inclusive = false)
+                navController.popBackStack<HomeGraph.HomeRoute>(inclusive = false)
             },
-
         )
     }
 }

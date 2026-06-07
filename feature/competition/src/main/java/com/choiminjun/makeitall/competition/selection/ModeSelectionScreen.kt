@@ -65,10 +65,12 @@ fun ModeSelectionScreen(
     onStartGameClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .statusBarsPadding()
-        .navigationBarsPadding()) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .statusBarsPadding()
+            .navigationBarsPadding(),
+    ) {
         LazyColumn(
             modifier = modifier
                 .fillMaxSize()
@@ -129,8 +131,6 @@ fun ModeSelectionScreen(
                         )
                     }
                 }
-
-
             }
         }
         val enabled = uiState.selectedMode != null

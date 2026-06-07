@@ -10,11 +10,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -132,7 +129,6 @@ private fun PlayingContent(
             }
         }
 
-
         item {
             Row(
                 modifier = Modifier.fillMaxSize(),
@@ -152,7 +148,6 @@ private fun PlayingContent(
                 )
             }
         }
-
     }
 }
 
@@ -205,60 +200,6 @@ private fun PlayerScoreDisplay(
             text = "콤보 ${playerScore.combo}",
             style = MakeitallTheme.typography.bodyMSB,
         )
-    }
-}
-
-@Composable
-private fun FinishedContent(
-    uiState: GameState,
-    onRetryClick: () -> Unit,
-    onBackClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    Column(
-        modifier = modifier,
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        Text(
-            text = "게임 종료!",
-            style = MakeitallTheme.typography.headingXLSB,
-        )
-
-        Spacer(modifier = Modifier.height(32.dp))
-
-        Row(
-            horizontalArrangement = Arrangement.SpaceEvenly,
-        ) {
-            PlayerScore(
-                label = "USER A",
-                score = uiState.playerA.score,
-            )
-            Spacer(modifier = Modifier.width(64.dp))
-            PlayerScore(
-                label = "USER B",
-                score = uiState.playerB.score,
-            )
-        }
-
-        Spacer(modifier = Modifier.height(48.dp))
-
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(24.dp),
-        ) {
-            Button(onClick = onRetryClick) {
-                Text(
-                    text = "다시하기",
-                    style = MakeitallTheme.typography.bodyMSB,
-                )
-            }
-            Button(onClick = onBackClick) {
-                Text(
-                    text = "나가기",
-                    style = MakeitallTheme.typography.bodyMSB,
-                )
-            }
-        }
     }
 }
 

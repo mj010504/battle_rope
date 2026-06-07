@@ -2,20 +2,18 @@ package com.choiminjun.makeitall.competition.navigation
 
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
-import androidx.navigation.NavType
 import androidx.navigation.compose.composable
-import androidx.navigation.navArgument
 import com.choiminjun.makeitall.competition.connection.DeviceConnectionRoute
 import com.choiminjun.makeitall.competition.game.GameRoute
 import com.choiminjun.makeitall.competition.selection.ModeSelectionRoute
 import com.choiminjun.makeitall.domain.model.GameMode
-import com.choiminjun.makeitall.navigation.Route
+import com.choiminjun.makeitall.navigation.CompetitionGraph
 
 fun NavGraphBuilder.deviceConnectionScreen(
     navigateBack: () -> Unit,
     navigateToModeSelection: () -> Unit,
 ) {
-    composable(Route.DeviceConnection.route) {
+    composable<CompetitionGraph.DeviceConnectionRoute> {
         DeviceConnectionRoute(
             navigateBack = navigateBack,
             navigateToModeSelection = navigateToModeSelection,
@@ -27,7 +25,7 @@ fun NavGraphBuilder.modeSelectionScreen(
     navigateBack: () -> Unit,
     navigateToGame: (GameMode) -> Unit,
 ) {
-    composable(Route.ModeSelection.route) {
+    composable<CompetitionGraph.ModeSelectionRoute> {
         ModeSelectionRoute(
             navigateBack = navigateBack,
             navigateToGame = navigateToGame,
@@ -38,14 +36,7 @@ fun NavGraphBuilder.modeSelectionScreen(
 fun NavGraphBuilder.gameScreen(
     navigateBack: () -> Unit,
 ) {
-    composable(
-        route = Route.Game.route,
-        arguments = listOf(
-            navArgument(Route.Game.MODE_ARG) {
-                type = NavType.StringType
-            },
-        ),
-    ) {
+    composable<CompetitionGraph.GameRoute> {
         GameRoute(
             navigateBack = navigateBack,
         )
@@ -53,13 +44,13 @@ fun NavGraphBuilder.gameScreen(
 }
 
 fun NavController.navigateToDeviceConnection() {
-    navigate(Route.DeviceConnection.route)
+    navigate(CompetitionGraph.DeviceConnectionRoute)
 }
 
 fun NavController.navigateToModeSelection() {
-    navigate(Route.ModeSelection.route)
+    navigate(CompetitionGraph.ModeSelectionRoute)
 }
 
 fun NavController.navigateToGame(mode: GameMode) {
-    navigate(Route.Game.createRoute(mode.name))
+    navigate(CompetitionGraph.GameRoute(mode.name))
 }

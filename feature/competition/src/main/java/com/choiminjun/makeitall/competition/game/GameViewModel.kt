@@ -10,7 +10,8 @@ import com.choiminjun.makeitall.domain.model.GameMode
 import com.choiminjun.makeitall.domain.model.GameResult
 import com.choiminjun.makeitall.domain.model.Player
 import com.choiminjun.makeitall.domain.model.PlayerScore
-import com.choiminjun.makeitall.navigation.Route
+import androidx.navigation.toRoute
+import com.choiminjun.makeitall.navigation.CompetitionGraph
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -39,7 +40,7 @@ class GameViewModel @Inject constructor(
     }
 
     private fun initializeGame(savedStateHandle: SavedStateHandle) {
-        val modeArg = savedStateHandle.get<String>(Route.Game.MODE_ARG) ?: GameMode.CLASSIC.name
+        val modeArg = savedStateHandle.toRoute<CompetitionGraph.GameRoute>().mode
         val mode = runCatching { GameMode.valueOf(modeArg) }.getOrDefault(GameMode.CLASSIC)
         gameEngine = GameEngine(mode)
         reduce {

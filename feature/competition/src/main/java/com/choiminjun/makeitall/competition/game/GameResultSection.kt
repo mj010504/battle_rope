@@ -94,26 +94,25 @@ private fun PlayerResult(
             verticalArrangement = Arrangement.spacedBy(4.dp),
         ) {
             Row(
-                horizontalArrangement = Arrangement.spacedBy(10.dp)
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
             ) {
                 StatRow("최종 점수", playerScore.score.toString())
                 StatRow("최고 콤보", playerScore.maxCombo.toString())
             }
 
             Row(
-                horizontalArrangement = Arrangement.spacedBy(10.dp)
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
             ) {
                 StatRow("총 점프", playerScore.rawJumpCount.toString())
                 StatRow("줄걸림", playerScore.trippedCount.toString())
             }
 
             Row(
-                horizontalArrangement = Arrangement.spacedBy(10.dp)
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
             ) {
                 StatRow("추월", playerScore.overtakeCount.toString())
                 StatRow("피버 점수", playerScore.feverScore.toString())
             }
-
         }
     }
 }

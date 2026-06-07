@@ -60,7 +60,7 @@ fun DeviceConnectionScreen(
     modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = Modifier.fillMaxSize().padding(top = 20.dp)
+        modifier = Modifier.fillMaxSize().padding(top = 20.dp),
     ) {
         IconButton(
             modifier = Modifier.padding(start = 20.dp),
@@ -78,9 +78,6 @@ fun DeviceConnectionScreen(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-
-
-
             if (uiState.isConnected) {
                 Column(
                     modifier = Modifier.fillMaxWidth(),
