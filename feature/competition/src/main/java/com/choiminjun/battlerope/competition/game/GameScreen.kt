@@ -2,6 +2,7 @@ package com.choiminjun.battlerope.competition.game
 
 import android.app.Activity
 import android.content.pm.ActivityInfo
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -66,6 +67,10 @@ fun GameScreen(
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
 ) {
+    BackHandler {
+        onBackClick()
+    }
+
     Box(
         modifier = modifier
             .fillMaxSize()
@@ -146,28 +151,6 @@ private fun PlayingContent(
                 )
             }
         }
-    }
-}
-
-@Composable
-private fun PlayerScore(
-    label: String,
-    score: Int,
-    modifier: Modifier = Modifier,
-) {
-    Column(
-        modifier = modifier,
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        Text(
-            text = label,
-            style = BattleRopeTheme.typography.headingLSB,
-        )
-        Spacer(modifier = Modifier.height(16.dp))
-        Text(
-            text = score.toString(),
-            style = BattleRopeTheme.typography.headingXLSB.copy(fontSize = 72.sp),
-        )
     }
 }
 
