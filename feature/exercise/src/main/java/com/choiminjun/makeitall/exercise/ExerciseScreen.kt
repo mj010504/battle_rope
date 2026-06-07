@@ -5,10 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -17,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.choiminjun.makeitall.designsystem.component.MakeitallButton
 import com.choiminjun.makeitall.designsystem.theme.MakeitallTheme
 import com.choiminjun.makeitall.domain.model.BleConnectionState
 import com.choiminjun.makeitall.domain.model.JumpRopeSnapshot
@@ -106,21 +104,18 @@ fun ExerciseScreen(
                     modifier = Modifier.padding(top = 32.dp),
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
                 ) {
-                    Button(
+                    MakeitallButton(
+                        text = "운동 시작",
                         onClick = onStartClick,
                         enabled = !uiState.isExerciseRunning,
-                    ) {
-                        Text(text = "운동 시작")
-                    }
-                    Button(
+                        modifier = Modifier.weight(1f),
+                    )
+                    MakeitallButton(
+                        text = "운동 중지",
                         onClick = onStopClick,
                         enabled = uiState.isExerciseRunning,
-                        colors = ButtonDefaults.buttonColors(
-                            containerColor = MaterialTheme.colorScheme.error,
-                        ),
-                    ) {
-                        Text(text = "운동 중지")
-                    }
+                        modifier = Modifier.weight(1f),
+                    )
                 }
             }
         }

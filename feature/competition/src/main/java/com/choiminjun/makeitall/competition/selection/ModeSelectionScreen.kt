@@ -31,6 +31,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.choiminjun.makeitall.designsystem.R
+import com.choiminjun.makeitall.designsystem.component.MakeitallButton
 import com.choiminjun.makeitall.designsystem.theme.MakeitallTheme
 import com.choiminjun.makeitall.domain.model.GameMode
 
@@ -133,27 +134,15 @@ fun ModeSelectionScreen(
                 }
             }
         }
-        val enabled = uiState.selectedMode != null
-        Box(
+        MakeitallButton(
+            text = "시작하기",
+            onClick = onStartGameClick,
+            enabled = uiState.selectedMode != null,
             modifier = Modifier
-                .fillMaxWidth()
                 .padding(horizontal = 28.dp)
                 .padding(bottom = 48.dp)
-                .clip(RoundedCornerShape(12.dp))
-                .clickable {
-                    if (enabled) onStartGameClick()
-                }
-                .background(color = if (enabled) MakeitallTheme.colors.primary else MakeitallTheme.colors.coolNeutral90)
-                .padding(vertical = 16.dp)
                 .align(Alignment.BottomCenter),
-        ) {
-            Text(
-                modifier = Modifier.align(Alignment.Center),
-                text = "시작하기",
-                color = MakeitallTheme.colors.white,
-                style = MakeitallTheme.typography.headingMSB,
-            )
-        }
+        )
     }
 }
 

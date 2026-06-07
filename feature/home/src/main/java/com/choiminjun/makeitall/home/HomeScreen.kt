@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
+import com.choiminjun.makeitall.designsystem.component.MakeitallButton
 import com.choiminjun.makeitall.designsystem.theme.MakeitallTheme
 
 @Composable
@@ -104,24 +104,16 @@ fun HomeScreen(
             text = "스마트 줄넘기",
             style = MakeitallTheme.typography.headingXLSB,
         )
-        Button(
+        MakeitallButton(
+            text = "테스트",
             onClick = onStartClick,
             modifier = Modifier.padding(top = 24.dp),
-        ) {
-            Text(
-                text = "테스트",
-                style = MakeitallTheme.typography.bodyMSB,
-            )
-        }
-        Button(
+        )
+        MakeitallButton(
+            text = "경쟁 모드",
             onClick = onCompetitionClick,
             modifier = Modifier.padding(top = 16.dp),
-        ) {
-            Text(
-                text = "경쟁 모드",
-                style = MakeitallTheme.typography.bodyMSB,
-            )
-        }
+        )
     }
 }
 

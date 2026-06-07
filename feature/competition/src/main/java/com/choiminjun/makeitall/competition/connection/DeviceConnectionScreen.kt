@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -27,6 +26,7 @@ import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.choiminjun.makeitall.designsystem.R
+import com.choiminjun.makeitall.designsystem.component.MakeitallButton
 import com.choiminjun.makeitall.designsystem.theme.MakeitallTheme
 import com.choiminjun.makeitall.domain.model.BleConnectionState
 
@@ -89,21 +89,11 @@ fun DeviceConnectionScreen(
                         style = MakeitallTheme.typography.headingLSB,
                     )
 
-                    Button(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 12.dp)
-                            .padding(horizontal = 60.dp),
-                        onClick = {
-                            onGameStartClick()
-                        },
-                    ) {
-                        Text(
-                            text = "게임 시작",
-                            color = MakeitallTheme.colors.white,
-                            style = MakeitallTheme.typography.headingLSB,
-                        )
-                    }
+                    MakeitallButton(
+                        text = "게임 시작",
+                        onClick = onGameStartClick,
+                        modifier = Modifier.padding(horizontal = 60.dp),
+                    )
                 }
             } else {
                 val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.jump_rope))
