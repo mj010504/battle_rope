@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -25,12 +24,6 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.choiminjun.makeitall.designsystem.theme.MakeitallTheme
-import timber.log.Timber
-
-private enum class NavigationTarget {
-    EXERCISE,
-    COMPETITION,
-}
 
 @Composable
 fun HomeRoute(
@@ -53,65 +46,36 @@ fun HomeRoute(
         )
     }
 
-    var pendingNavigation by remember { mutableStateOf<NavigationTarget?>(null) }
-
-    LaunchedEffect(pendingNavigation) {
-        when (pendingNavigation) {
-            NavigationTarget.EXERCISE -> {
-                Timber.d("[HomeRoute] LaunchedEffect: 권한 허용됨 → navigateToExercise 호출")
-                pendingNavigation = null
-                navigateToExercise()
-            }
-            NavigationTarget.COMPETITION -> {
-                Timber.d("[HomeRoute] LaunchedEffect: 권한 허용됨 → navigateToCompetition 호출")
-                pendingNavigation = null
-                navigateToCompetition()
-            }
-            null -> Unit
-        }
-    }
+    var pendingTarget by remember { mutableStateOf<BlePermissionTarget?>(null) }
 
     val permissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestMultiplePermissions(),
-    ) { result ->
-        Timber.tag("Home").d("권한 결과: $result")
-        val btGranted = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            result[Manifest.permission.BLUETOOTH_SCAN] == true &&
-                result[Manifest.permission.BLUETOOTH_CONNECT] == true
-        } else {
-            result[Manifest.permission.BLUETOOTH] == true &&
-                result[Manifest.permission.BLUETOOTH_ADMIN] == true
+    ) { results ->
+        val granted = results.values.all { it }
+        pendingTarget?.let { target ->
+            viewModel.onIntent(HomeIntent.BlePermissionResult(granted, target))
         }
-        Timber.tag("Home").d("btGranted=$btGranted")
-        if (!btGranted) {
-            Timber.tag("Home").w("권한 부족: bt=$btGranted")
-        }
+        pendingTarget = null
     }
 
     viewModel.collectSideEffect { sideEffect ->
+        fun requestPermission(target: BlePermissionTarget) {
+            val alreadyGranted = blePermissions.all {
+                ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
+            }
+            if (alreadyGranted) {
+                viewModel.onIntent(HomeIntent.BlePermissionResult(true, target))
+            } else {
+                pendingTarget = target
+                permissionLauncher.launch(blePermissions)
+            }
+        }
+
         when (sideEffect) {
-            HomeSideEffect.NavigateToExercise -> {
-                val alreadyGranted = blePermissions.all {
-                    ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
-                }
-                if (alreadyGranted) {
-                    navigateToExercise()
-                } else {
-                    pendingNavigation = NavigationTarget.EXERCISE
-                    permissionLauncher.launch(blePermissions)
-                }
-            }
-            HomeSideEffect.NavigateToCompetition -> {
-                val alreadyGranted = blePermissions.all {
-                    ContextCompat.checkSelfPermission(context, it) == PackageManager.PERMISSION_GRANTED
-                }
-                if (alreadyGranted) {
-                    navigateToCompetition()
-                } else {
-                    pendingNavigation = NavigationTarget.COMPETITION
-                    permissionLauncher.launch(blePermissions)
-                }
-            }
+            HomeSideEffect.RequestBlePermissionForExercise -> requestPermission(BlePermissionTarget.EXERCISE)
+            HomeSideEffect.RequestBlePermissionForCompetition -> requestPermission(BlePermissionTarget.COMPETITION)
+            HomeSideEffect.NavigateToExercise -> navigateToExercise()
+            HomeSideEffect.NavigateToCompetition -> navigateToCompetition()
         }
     }
 

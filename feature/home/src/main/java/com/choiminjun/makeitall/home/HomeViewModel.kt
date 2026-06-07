@@ -12,14 +12,23 @@ class HomeViewModel @Inject constructor() : BaseViewModel<HomeState, HomeIntent,
         when (intent) {
             HomeIntent.ClickStartExercise -> clickStartExercise()
             HomeIntent.ClickCompetitionMode -> clickCompetitionMode()
+            is HomeIntent.BlePermissionResult -> handleBlePermissionResult(intent.granted, intent.target)
         }
     }
 
     private fun clickStartExercise() {
-        postSideEffect(HomeSideEffect.NavigateToExercise)
+        postSideEffect(HomeSideEffect.RequestBlePermissionForExercise)
     }
 
     private fun clickCompetitionMode() {
-        postSideEffect(HomeSideEffect.NavigateToCompetition)
+        postSideEffect(HomeSideEffect.RequestBlePermissionForCompetition)
+    }
+
+    private fun handleBlePermissionResult(granted: Boolean, target: BlePermissionTarget) {
+        if (!granted) return
+        when (target) {
+            BlePermissionTarget.EXERCISE -> postSideEffect(HomeSideEffect.NavigateToExercise)
+            BlePermissionTarget.COMPETITION -> postSideEffect(HomeSideEffect.NavigateToCompetition)
+        }
     }
 }
