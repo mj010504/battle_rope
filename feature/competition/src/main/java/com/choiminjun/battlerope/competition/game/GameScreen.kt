@@ -57,7 +57,6 @@ fun GameRoute(
     GameScreen(
         uiState = uiState,
         onBackClick = { viewModel.onIntent(GameIntent.ClickBack) },
-        onRetryClick = { viewModel.onIntent(GameIntent.ClickRetry) },
     )
 }
 
@@ -66,7 +65,6 @@ fun GameScreen(
     uiState: GameState,
     modifier: Modifier = Modifier,
     onBackClick: () -> Unit,
-    onRetryClick: () -> Unit,
 ) {
     Box(
         modifier = modifier
@@ -223,7 +221,6 @@ private fun GameScreenCountdownPreview() {
                 countdownValue = 3,
             ),
             onBackClick = {},
-            onRetryClick = {},
         )
     }
 }
@@ -253,7 +250,6 @@ private fun GameScreenPlayingPreview() {
                 ),
             ),
             onBackClick = {},
-            onRetryClick = {},
         )
     }
 }
@@ -281,7 +277,6 @@ private fun GameScreenFinishedPreview() {
                 ),
             ),
             onBackClick = {},
-            onRetryClick = {},
         )
     }
 }

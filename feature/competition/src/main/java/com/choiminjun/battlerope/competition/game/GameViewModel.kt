@@ -4,13 +4,12 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import com.choiminjun.battlerope.base.BaseViewModel
-import com.choiminjun.battlerope.ble.source.JumpRopeBleSource
 import com.choiminjun.battlerope.competition.game.engine.GameEngine
-import com.choiminjun.battlerope.domain.model.BleConnectionState
 import com.choiminjun.battlerope.domain.model.GameMode
 import com.choiminjun.battlerope.domain.model.GameResult
 import com.choiminjun.battlerope.domain.model.Player
 import com.choiminjun.battlerope.domain.model.PlayerScore
+import com.choiminjun.battlerope.domain.repository.ExerciseRepository
 import com.choiminjun.battlerope.navigation.CompetitionGraph
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -23,7 +22,7 @@ import kotlin.time.Duration.Companion.seconds
 @HiltViewModel
 class GameViewModel @Inject constructor(
     savedStateHandle: SavedStateHandle,
-    private val jumpRopeBleSource: JumpRopeBleSource,
+    private val exerciseRepository: ExerciseRepository,
 ) : BaseViewModel<GameState, GameIntent, GameSideEffect>(
     initialState = GameState(),
 ) {
@@ -35,7 +34,6 @@ class GameViewModel @Inject constructor(
 
     init {
         initializeGame(savedStateHandle)
-        observeConnectionState()
         observeSnapshot()
     }
 
@@ -55,7 +53,6 @@ class GameViewModel @Inject constructor(
     override suspend fun handleIntent(intent: GameIntent) {
         when (intent) {
             GameIntent.ClickBack -> clickBack()
-            GameIntent.ClickRetry -> retryGame()
         }
     }
 
@@ -63,9 +60,7 @@ class GameViewModel @Inject constructor(
         super.onCleared()
         countdownJob?.cancel()
         gameTimerJob?.cancel()
-        jumpRopeBleSource.stopExercise()
-        jumpRopeBleSource.unsubscribeFromExerciseData()
-        jumpRopeBleSource.disconnect()
+        exerciseRepository.release()
     }
 
     private fun startCountdown() {
@@ -90,7 +85,7 @@ class GameViewModel @Inject constructor(
         }
         latestRawCountA = 0
         latestRawCountB = 0
-        jumpRopeBleSource.startExercise()
+        exerciseRepository.startExercise()
         startGameTimer()
     }
 
@@ -105,29 +100,23 @@ class GameViewModel @Inject constructor(
                 val tickResult = gameEngine.tick(elapsedSec, latestRawCountA, latestRawCountB, currentState)
                 val remaining = duration - elapsedSec
 
+                val leadingPlayer = when {
+                    tickResult.playerA.score > tickResult.playerB.score -> Player.A
+                    tickResult.playerB.score > tickResult.playerA.score -> Player.B
+                    else -> null
+                }
+
                 reduce {
                     copy(
                         remainingTimeSec = remaining,
                         playerA = tickResult.playerA,
                         playerB = tickResult.playerB,
                         feverState = tickResult.feverState,
-                        leader = if (tickResult.playerA.score > tickResult.playerB.score) {
-                            Player.A
-                        } else if (tickResult.playerB.score > tickResult.playerA.score) {
-                            Player.B
-                        } else {
-                            null
-                        },
+                        leader = leadingPlayer,
                         recentEvent = tickResult.events.lastOrNull(),
                         gameResult = GameResult(
                             mode = mode,
-                            winner = if (tickResult.playerA.score > tickResult.playerB.score) {
-                                Player.A
-                            } else if (tickResult.playerB.score > tickResult.playerA.score) {
-                                Player.B
-                            } else {
-                                null
-                            },
+                            winner = leadingPlayer,
                             playerA = tickResult.playerA,
                             playerB = tickResult.playerB,
                             totalDurationSec = duration,
@@ -144,22 +133,13 @@ class GameViewModel @Inject constructor(
     }
 
     private fun finishGame() {
-        jumpRopeBleSource.stopExercise()
+        exerciseRepository.stopExercise()
         reduce { copy(phase = GamePhase.FINISHED) }
-    }
-    private fun observeConnectionState() {
-        viewModelScope.launch {
-            jumpRopeBleSource.connectionState.collect { state ->
-                if (state is BleConnectionState.Connected) {
-                    jumpRopeBleSource.subscribeToExerciseData()
-                }
-            }
-        }
     }
 
     private fun observeSnapshot() {
         viewModelScope.launch {
-            jumpRopeBleSource.snapshot.collect { snapshot ->
+            exerciseRepository.observeSnapshot().collect { snapshot ->
                 if (snapshot != null) {
                     latestRawCountA = snapshot.userACount
                     latestRawCountB = snapshot.userBCount
@@ -168,26 +148,10 @@ class GameViewModel @Inject constructor(
         }
     }
 
-    private fun retryGame() {
-        countdownJob?.cancel()
-        gameTimerJob?.cancel()
-        gameEngine = GameEngine(state.value.mode)
-        reduce {
-            copy(
-                phase = GamePhase.COUNTDOWN,
-                countdownValue = COUNTDOWN_START,
-                remainingTimeSec = mode.durationSec,
-                playerA = PlayerScore(Player.A),
-                playerB = PlayerScore(Player.B),
-            )
-        }
-        startCountdown()
-    }
-
     private fun clickBack() {
         countdownJob?.cancel()
         gameTimerJob?.cancel()
-        jumpRopeBleSource.stopExercise()
+        exerciseRepository.stopExercise()
         postSideEffect(GameSideEffect.NavigateBack)
     }
 

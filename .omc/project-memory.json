@@ -154,14 +154,20 @@
   "hotPaths": [
     {
       "path": "",
-      "accessCount": 21,
-      "lastAccessed": 1780812478879,
+      "accessCount": 30,
+      "lastAccessed": 1780814532731,
       "type": "directory"
     },
     {
       "path": "feature\\home\\src\\main\\java\\com\\choiminjun\\makeitall\\home\\HomeScreen.kt",
       "accessCount": 6,
       "lastAccessed": 1780806722783,
+      "type": "file"
+    },
+    {
+      "path": "feature\\competition\\src\\main\\java\\com\\choiminjun\\battlerope\\competition\\game\\GameViewModel.kt",
+      "accessCount": 6,
+      "lastAccessed": 1780814165831,
       "type": "file"
     },
     {
@@ -186,6 +192,12 @@
       "path": "feature\\competition\\src\\main\\java\\com\\choiminjun\\makeitall\\competition\\game\\GameScreen.kt",
       "accessCount": 4,
       "lastAccessed": 1780806636435,
+      "type": "file"
+    },
+    {
+      "path": "core\\domain\\src\\main\\kotlin\\com\\choiminjun\\battlerope\\domain\\repository\\ExerciseRepository.kt",
+      "accessCount": 4,
+      "lastAccessed": 1780814558766,
       "type": "file"
     },
     {
@@ -222,6 +234,18 @@
       "path": "app\\src\\main\\AndroidManifest.xml",
       "accessCount": 3,
       "lastAccessed": 1780812477486,
+      "type": "file"
+    },
+    {
+      "path": "core\\ble\\src\\main\\kotlin\\com\\choiminjun\\battlerope\\ble\\source\\JumpRopeBleSource.kt",
+      "accessCount": 3,
+      "lastAccessed": 1780813292912,
+      "type": "file"
+    },
+    {
+      "path": "feature\\exercise\\src\\main\\java\\com\\choiminjun\\battlerope\\exercise\\ExerciseViewModel.kt",
+      "accessCount": 3,
+      "lastAccessed": 1780814119103,
       "type": "file"
     },
     {
@@ -321,15 +345,21 @@
       "type": "file"
     },
     {
-      "path": "feature",
-      "accessCount": 1,
-      "lastAccessed": 1780705362120,
+      "path": "core",
+      "accessCount": 2,
+      "lastAccessed": 1780813806275,
       "type": "directory"
     },
     {
-      "path": "core",
+      "path": "feature\\exercise\\src\\main\\java\\com\\choiminjun\\battlerope\\exercise\\ExerciseContract.kt",
+      "accessCount": 2,
+      "lastAccessed": 1780813970476,
+      "type": "file"
+    },
+    {
+      "path": "feature",
       "accessCount": 1,
-      "lastAccessed": 1780705362317,
+      "lastAccessed": 1780705362120,
       "type": "directory"
     },
     {
@@ -396,6 +426,30 @@
       "path": "app\\src\\main\\java\\com\\choiminjun\\makeitall\\MakeitallApplication.kt",
       "accessCount": 1,
       "lastAccessed": 1780807498407,
+      "type": "file"
+    },
+    {
+      "path": "feature/competition/src/main/java/com/choiminjun/battlerope/competition/game/GameViewModel.kt",
+      "accessCount": 1,
+      "lastAccessed": 1780812876932,
+      "type": "directory"
+    },
+    {
+      "path": "core\\base\\src\\main\\java\\com\\choiminjun\\battlerope\\base\\BaseViewModel.kt",
+      "accessCount": 1,
+      "lastAccessed": 1780813198230,
+      "type": "file"
+    },
+    {
+      "path": "feature\\competition\\src\\main\\java\\com\\choiminjun\\battlerope\\competition\\game\\GameContract.kt",
+      "accessCount": 1,
+      "lastAccessed": 1780813202423,
+      "type": "file"
+    },
+    {
+      "path": "feature\\competition\\src\\main\\java\\com\\choiminjun\\battlerope\\competition\\game\\engine\\GameEngine.kt",
+      "accessCount": 1,
+      "lastAccessed": 1780813202799,
       "type": "file"
     }
   ],

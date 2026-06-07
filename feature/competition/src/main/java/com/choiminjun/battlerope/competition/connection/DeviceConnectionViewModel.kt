@@ -2,22 +2,21 @@ package com.choiminjun.battlerope.competition.connection
 
 import androidx.lifecycle.viewModelScope
 import com.choiminjun.battlerope.base.BaseViewModel
-import com.choiminjun.battlerope.ble.source.JumpRopeBleSource
 import com.choiminjun.battlerope.domain.model.BleConnectionState
+import com.choiminjun.battlerope.domain.repository.ExerciseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class DeviceConnectionViewModel @Inject constructor(
-    private val jumpRopeBleSource: JumpRopeBleSource,
+    private val exerciseRepository: ExerciseRepository,
 ) : BaseViewModel<DeviceConnectionState, DeviceConnectionIntent, DeviceConnectionSideEffect>(
     initialState = DeviceConnectionState(),
 ) {
     init {
         observeConnectionState()
-        observeScanResults()
-        startScan()
+        connectToDevice()
     }
 
     override suspend fun handleIntent(intent: DeviceConnectionIntent) {
@@ -27,39 +26,25 @@ class DeviceConnectionViewModel @Inject constructor(
         }
     }
 
-    override fun onCleared() {
-        super.onCleared()
-        jumpRopeBleSource.stopScan()
-    }
-
-    private fun startScan() {
-        jumpRopeBleSource.startScan()
-    }
-
-    private fun observeScanResults() {
-        viewModelScope.launch {
-            jumpRopeBleSource.scanResults.collect { devices ->
-                val device = devices.firstOrNull() ?: return@collect
-                jumpRopeBleSource.stopScan()
-                jumpRopeBleSource.connect(device)
-            }
-        }
+    private fun connectToDevice() {
+        exerciseRepository.connectToDevice()
     }
 
     private fun observeConnectionState() {
         viewModelScope.launch {
-            jumpRopeBleSource.connectionState.collect { connectionState ->
-                reduce { copy(connectionState = connectionState) }
-
-                if (connectionState is BleConnectionState.Connected) {
-                    reduce { copy(isConnected = true) }
+            exerciseRepository.observeConnectionState().collect { connectionState ->
+                reduce {
+                    copy(
+                        connectionState = connectionState,
+                        isConnected = connectionState is BleConnectionState.Connected,
+                    )
                 }
             }
         }
     }
 
     private fun clickBack() {
-        jumpRopeBleSource.disconnect()
+        exerciseRepository.disconnect()
         postSideEffect(DeviceConnectionSideEffect.NavigateBack)
     }
 }

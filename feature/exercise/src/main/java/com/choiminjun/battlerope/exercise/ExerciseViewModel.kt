@@ -2,25 +2,22 @@ package com.choiminjun.battlerope.exercise
 
 import androidx.lifecycle.viewModelScope
 import com.choiminjun.battlerope.base.BaseViewModel
-import com.choiminjun.battlerope.ble.source.JumpRopeBleSource
-import com.choiminjun.battlerope.domain.model.BleConnectionState
+import com.choiminjun.battlerope.domain.repository.ExerciseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import timber.log.Timber
 import javax.inject.Inject
 
 @HiltViewModel
 class ExerciseViewModel @Inject constructor(
-    private val jumpRopeBleSource: JumpRopeBleSource,
+    private val exerciseRepository: ExerciseRepository,
 ) : BaseViewModel<ExerciseState, ExerciseIntent, ExerciseSideEffect>(
     initialState = ExerciseState(),
 ) {
     init {
         observeConnectionState()
         observeSnapshot()
-        observeScanResults()
-        observeAckResult()
-        startScan()
+        observeIsExerciseRunning()
+        connectToDevice()
     }
 
     override suspend fun handleIntent(intent: ExerciseIntent) {
@@ -33,73 +30,43 @@ class ExerciseViewModel @Inject constructor(
 
     override fun onCleared() {
         super.onCleared()
-        jumpRopeBleSource.unsubscribeFromExerciseData()
-        jumpRopeBleSource.disconnect()
+        exerciseRepository.release()
     }
 
-    private fun startScan() {
-        jumpRopeBleSource.startScan()
-    }
-
-    private fun observeScanResults() {
-        viewModelScope.launch {
-            jumpRopeBleSource.scanResults.collect { devices ->
-                val device = devices.firstOrNull() ?: return@collect
-                jumpRopeBleSource.stopScan()
-                jumpRopeBleSource.connect(device)
-            }
-        }
+    private fun connectToDevice() {
+        exerciseRepository.connectToDevice()
     }
 
     private fun observeConnectionState() {
         viewModelScope.launch {
-            jumpRopeBleSource.connectionState.collect { connectionState ->
-                if (connectionState is BleConnectionState.Connected) {
-                    jumpRopeBleSource.subscribeToExerciseData()
-                }
-                reduce {
-                    copy(
-                        connectionState = connectionState,
-                        isExerciseRunning = if (connectionState is BleConnectionState.Disconnected) {
-                            false
-                        } else {
-                            isExerciseRunning
-                        },
-                    )
-                }
+            exerciseRepository.observeConnectionState().collect { connectionState ->
+                reduce { copy(connectionState = connectionState) }
             }
         }
     }
 
     private fun observeSnapshot() {
         viewModelScope.launch {
-            jumpRopeBleSource.snapshot.collect { snapshot ->
+            exerciseRepository.observeSnapshot().collect { snapshot ->
                 reduce { copy(snapshot = snapshot) }
             }
         }
     }
 
-    private fun observeAckResult() {
+    private fun observeIsExerciseRunning() {
         viewModelScope.launch {
-            jumpRopeBleSource.ackResult.collect { ack ->
-                if (!ack.isSuccess) {
-                    Timber.w("ACK 실패 | requestCmdId=0x${"%02X".format(ack.requestCmdId)} | resultCode=0x${"%02X".format(ack.resultCode)}")
-                    return@collect
-                }
-                when (ack.requestCmdId) {
-                    JumpRopeBleSource.CMD_START[0] -> reduce { copy(isExerciseRunning = true) }
-                    JumpRopeBleSource.CMD_STOP[0] -> reduce { copy(isExerciseRunning = false) }
-                }
+            exerciseRepository.observeIsExerciseRunning().collect { isRunning ->
+                reduce { copy(isExerciseRunning = isRunning) }
             }
         }
     }
 
     private fun startExercise() {
-        jumpRopeBleSource.startExercise()
+        exerciseRepository.startExercise()
     }
 
     private fun stopExercise() {
-        jumpRopeBleSource.stopExercise()
+        exerciseRepository.stopExercise()
     }
 
     private fun clickBack() {

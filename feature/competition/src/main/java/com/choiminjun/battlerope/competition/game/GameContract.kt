@@ -37,7 +37,6 @@ data class GameState(
 
 sealed interface GameIntent : UiIntent {
     data object ClickBack : GameIntent
-    data object ClickRetry : GameIntent
 }
 
 sealed interface GameSideEffect : UiSideEffect {

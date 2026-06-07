@@ -7,6 +7,6 @@ android {
 }
 
 dependencies {
-    implementation(projects.core.ble)
+    implementation(projects.core.data)
     implementation(projects.core.navigation)
 }
